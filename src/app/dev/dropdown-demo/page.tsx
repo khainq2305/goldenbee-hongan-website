@@ -1,3 +1,4 @@
+'use client';
 import DropdownMenu from '../../../components/ui/Dropdown';
 
 export default function ExamplePage() {
