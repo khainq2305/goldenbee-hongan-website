@@ -1,0 +1,13 @@
+.swiper-custom-bullet {
+  display: inline-block;
+  width: 16px;
+  height: 3px;
+  margin: 0 4px;
+  background-color: #d1d5db; /* Tailwind gray-300 */
+  border-radius: 9999px;
+  transition: background-color 0.3s ease;
+}
+
+.swiper-custom-bullet.swiper-pagination-bullet-active {
+  background-color: #2563eb !important; /* Tailwind blue-600 */
+}

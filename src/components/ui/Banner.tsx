@@ -1,14 +1,16 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { HiChevronLeft, HiChevronRight } from 'react-icons/hi';
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "../../styles/banner.css";
 
 type Banner = {
   id: number;
-  title: string;
-  subtitle: string;
   imageUrl: string;
-  ctaText: string;
 };
 
 type Props = {
@@ -16,49 +18,57 @@ type Props = {
 };
 
 export default function BannerSlider({ banners }: Props) {
-  const [current, setCurrent] = useState(0);
-  const total = banners.length;
-
-  const next = () => setCurrent((prev) => (prev + 1) % total);
-  const prev = () => setCurrent((prev) => (prev - 1 + total) % total);
-
   return (
-    <div className="relative w-full max-w-[970px] h-[320px] overflow-hidden rounded-xl shadow-md mx-auto">
-      {banners.map((banner, index) => (
-        <div
-          key={banner.id}
-          className={`absolute inset-0 transition-opacity duration-500 ease-in-out ${
-            index === current ? 'opacity-100' : 'opacity-0'
-          }`}
+    <div className="w-full max-w-[1046px] mx-auto px-4">
+      {/* Responsive height with md:h-[404px] from Figma */}
+      <div className="relative h-[180px] sm:h-[240px] md:h-[404px]">
+        <Swiper
+          modules={[Navigation, Pagination, Autoplay]}
+          slidesPerView={1}
+          spaceBetween={12}
+          loop
+          autoplay={{ delay: 4000 }}
+          navigation={{
+            prevEl: ".custom-prev",
+            nextEl: ".custom-next",
+          }}
+          pagination={{
+            el: ".custom-pagination",
+            clickable: true,
+            renderBullet: (_, className) =>
+              `<span class="${className} swiper-custom-bullet"></span>`,
+          }}
+          breakpoints={{
+            640: { slidesPerView: 1 }, // mobile
+            768: { slidesPerView: 1 }, // ✅ tablet vẫn 1 ảnh
+            1024: { slidesPerView: 2 }, // desktop 2 ảnh
+          }}
+          className="w-full h-full"
         >
-          <img
-            src={banner.imageUrl}
-            alt={banner.title}
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-black/30 flex flex-col justify-center px-10 text-white">
-            <h2 className="text-2xl font-bold">{banner.title}</h2>
-            <p className="mt-2 text-sm">{banner.subtitle}</p>
-            <button className="mt-4 px-4 py-2 bg-white text-blue-600 rounded-full w-max text-sm hover:bg-gray-100">
-              {banner.ctaText}
-            </button>
-          </div>
-        </div>
-      ))}
+          {banners.map((banner) => (
+            <SwiperSlide key={banner.id}>
+              <div className="w-full h-full rounded-lg overflow-hidden">
+                <img
+                  src={banner.imageUrl}
+                  alt={`Banner ${banner.id}`}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
 
-      {/* Arrows */}
-      <button
-        className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 rounded-full p-2 text-gray-700 hover:bg-white shadow"
-        onClick={prev}
-      >
-        <HiChevronLeft className="w-5 h-5" />
-      </button>
-      <button
-        className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 rounded-full p-2 text-gray-700 hover:bg-white shadow"
-        onClick={next}
-      >
-        <HiChevronRight className="w-5 h-5" />
-      </button>
+        {/* Navigation buttons */}
+        <button className="custom-prev absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-700 rounded-full p-2 shadow z-10">
+          <HiChevronLeft className="w-5 h-5 text-blue-600" />
+        </button>
+        <button className="custom-next absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-700 rounded-full p-2 shadow z-10">
+          <HiChevronRight className="w-5 h-5 text-blue-600" />
+        </button>
+      </div>
+
+      {/* Pagination */}
+<div className="custom-pagination mt-4 hidden lg:flex justify-center" />
     </div>
   );
 }

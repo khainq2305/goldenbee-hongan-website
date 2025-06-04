@@ -1,23 +1,13 @@
 'use client';
 
-import BannerSlider from '../../../components/ui/Banner';
+import BannerSlider from '@/components/ui/Banner';
 
 const banners = [
-  {
-    id: 1,
-    title: 'Sạch sâu dịu nhẹ',
-    subtitle: 'Da luôn khỏe mạnh. Mua 1 tặng 1 – Giảm 50%',
-    imageUrl: 'https://picsum.photos/id/1015/970/320',
-    ctaText: 'Mua ngay',
-  },
-  {
-    id: 2,
-    title: 'SALE RẺ HƠN',
-    subtitle: 'Săn deal khoẻ re, đồng giá cực sốc',
-    imageUrl: 'https://picsum.photos/id/1018/970/320',
-    ctaText: 'Săn ngay',
-  },
+  { id: 1, imageUrl: 'https://bookish.vn/wp-content/uploads/2019/07/banner_web_trung-bay-sach-thieu-nhi_925x412.jpg' },
+  { id: 2, imageUrl: 'https://salt.tikicdn.com/ts/brickv2og/5a/eb/43/b6757b308e0195aaad79d8dd19d88fc2.jpg' },
+  { id: 3, imageUrl: 'https://thietkelogo.edu.vn/uploads/images/thiet-ke-do-hoa-khac/banner-sach/1.png' },
 ];
+
 
 export default function BannerDemoPage() {
   return (
