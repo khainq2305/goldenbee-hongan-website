@@ -162,7 +162,7 @@ const Header = () => {
     <header>
       {/* ================== MOBILE HEADER (lg:hidden) ================== */}
       <div className="lg:hidden relative z-10">
-        <div className={`${primaryBgClass} h-24 flex flex-col`}>
+        <div className={`bg-primary h-24 flex flex-col`}>
           <div className="text-white flex items-center justify-between px-3 py-2">
             <button
               ref={mobileMenuButtonRef}
@@ -243,7 +243,7 @@ const Header = () => {
       <div className="hidden lg:block">
         <div
           className={`
-            ${primaryBgClass} text-white text-center text-xs font-medium h-10
+            bg-colorprimary text-white text-center text-xs font-medium h-10
             flex items-center justify-center
           `}
         >
