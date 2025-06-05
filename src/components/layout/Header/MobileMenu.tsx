@@ -114,7 +114,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, items, onClose }) => {
 
      
       <div
-        className="fixed inset-0 z-40 bg-black/40 bg-opacity-50"
+        className="fixed inset-0 bg-black/40 z-40"
         onClick={onClose}
       />
     </>

@@ -18,7 +18,7 @@ const AccountPopup = ({ onClose }: { onClose: () => void }) => {
         style={{ minHeight: "480px" }}
         onClick={(e) => e.stopPropagation()}
       >
- <button
+        <button
           onClick={onClose}
           aria-label="Đóng"
           className="
@@ -53,7 +53,6 @@ const AccountPopup = ({ onClose }: { onClose: () => void }) => {
             />
           </svg>
         </button>
-
 
         <div className="w-full md:w-1/2 px-8 py-10 flex flex-col">
           <h2 className="text-3xl font-bold text-gray-900 mb-2">Xin chào,</h2>
@@ -160,7 +159,7 @@ const AccountPopup = ({ onClose }: { onClose: () => void }) => {
           </p>
         </div>
 
-       <div className="hidden md:flex md:w-1/2 bg-pink-50 p-8 flex-col items-center justify-center text-center rounded-tr-xl rounded-br-xl">
+        <div className="hidden md:flex md:w-1/2 bg-pink-50 p-8 flex-col items-center justify-center text-center rounded-tr-xl rounded-br-xl">
           <Image
             src="/images/header/accountPopup.png"
             alt="Mua sắm tại Hồng Ân"
@@ -172,7 +171,9 @@ const AccountPopup = ({ onClose }: { onClose: () => void }) => {
           <h3 className="text-2xl font-semibold text-[var(--color-primary)] mt-4">
             Mua sắm tại Hồng Ân
           </h3>
-          <p className="text-[var(--color-primary)] font-normal mt-1">Siêu ưu đãi mỗi ngày</p>
+          <p className="text-[var(--color-primary)] font-normal mt-1">
+            Siêu ưu đãi mỗi ngày
+          </p>
         </div>
       </div>
     </div>

@@ -57,7 +57,7 @@ const SearchPopupMobile: React.FC<SearchPopupMobileProps> = ({ onClose }) => {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             onKeyDown={handleSearchSubmit}
-            autoFocus
+          
             placeholder="Bạn cần tìm gì trong hôm nay..."
             type="text"
             className="
