@@ -8,7 +8,7 @@ import SearchPopup from "./SearchPopup";
 import SearchPopupMobile from "./SearchPopupMobile";
 import MobileMenu from "./MobileMenu";
 import AccountPopup from "./AccountPopup";
-
+import useOutsideClickHandlers from "@/hooks/useOutsideClickHandlers";
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSearchPopupOpen, setIsSearchPopupOpen] = useState(false);
@@ -37,42 +37,17 @@ const Header = () => {
       document.body.style.overflow = "auto";
     };
   }, [isSearchPopupOpen, isMobileMenuOpen, isAccountPopupOpen]);
-
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      const tgt = event.target as Node;
-
-      if (
-        searchContainerRef.current &&
-        !searchContainerRef.current.contains(tgt)
-      ) {
-        closeSearchPopup();
-      }
-
-      if (
-        isMobileMenuOpen &&
-        mobileMenuButtonRef.current &&
-        !mobileMenuButtonRef.current.contains(tgt) &&
-        !document.getElementById("mobile-menu")?.contains(tgt)
-      ) {
-        closeMobileMenu();
-      }
-
-      if (
-        isAccountPopupOpen &&
-        accountButtonRef.current &&
-        !accountButtonRef.current.contains(tgt) &&
-        !document.getElementById("account-popup")?.contains(tgt)
-      ) {
-        closeAccountPopup();
-      }
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [isMobileMenuOpen, isSearchPopupOpen, isAccountPopupOpen]);
+ useOutsideClickHandlers({
+    searchContainerRef,
+    mobileMenuButtonRef,
+    accountButtonRef,
+    isSearchPopupOpen,
+    isMobileMenuOpen,
+    isAccountPopupOpen,
+    closeSearchPopup,
+    closeMobileMenu,
+    closeAccountPopup,
+  });
 
   const infoItems = [
     {
@@ -155,12 +130,10 @@ const Header = () => {
     { label: "Liên hệ", href: "/lien-he", hasDropdown: false },
   ];
 
-  
-  const primaryBgClass = "bg-[var(--color-primary)]";
 
   return (
     <header>
-      {/* ================== MOBILE HEADER (lg:hidden) ================== */}
+      {/* ================== MOBILE HEADER ================== */}
       <div className="lg:hidden relative z-10">
         <div className={`bg-primary h-24 flex flex-col`}>
           <div className="text-white flex items-center justify-between px-3 py-2">
@@ -204,8 +177,8 @@ const Header = () => {
                   w-full py-2.5 pl-4 pr-10
                   rounded-full border border-gray-200
                   bg-white text-gray-900 placeholder-gray-500
-                  focus:outline-none focus:border-[var(--color-primary)]
-                  focus:ring-1 focus:ring-[var(--color-primary)]/50
+                  focus:outline-none
+                  focus:ring-1
                 "
               />
               <button className="absolute inset-y-0 right-3 flex items-center">
@@ -243,7 +216,7 @@ const Header = () => {
       <div className="hidden lg:block">
         <div
           className={`
-            bg-colorprimary text-white text-center text-xs font-medium h-10
+            bg-primary text-white text-center text-xs font-medium h-10
             flex items-center justify-center
           `}
         >

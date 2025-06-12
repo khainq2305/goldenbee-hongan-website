@@ -31,7 +31,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, items, onClose }) => {
         "
       >
         
-        <div className="flex items-center justify-between p-3 bg-[var(--color-primary)] text-white w-full flex-shrink-0 relative">
+        <div className="flex items-center justify-between p-3 bg-primary text-white w-full flex-shrink-0 relative">
           <Link
             href="/"
             className="text-2xl font-bold ml-4"
