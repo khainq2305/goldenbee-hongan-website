@@ -1,11 +1,17 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+<<<<<<< Updated upstream
+import "@/styles/globals.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
 });
+=======
+import "./globals.css"
+import Header from "@/components/layout/Header/Header"
+import Footer from '@/components/layout/Footer'
+>>>>>>> Stashed changes
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
@@ -23,12 +29,23 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+<<<<<<< Updated upstream
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
       </body>
+=======
+    <html lang="vi">
+      <body className="min-h-screen flex flex-col justify-between bg-gray-200">
+        <Header /> 
+        <main className="mb-40">
+          {children}
+        </main>
+       <Footer/>
+      </body> 
+>>>>>>> Stashed changes
     </html>
   );
 }
