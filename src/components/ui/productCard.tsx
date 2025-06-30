@@ -69,21 +69,22 @@ const ProductCard: React.FC<Props> = ({
 
         {/* Sao & Đã bán */}
         {status !== "disabled" && status !== "contact" && (
-          <div className="flex items-center gap-1 text-xs mt-1">
-            {Array.from({ length: 5 }).map((_, i) => (
-              <svg
-                key={i}
-                xmlns="http://www.w3.org/2000/svg"
-                fill="#ffc107"
-                viewBox="0 0 24 24"
-                stroke="none"
-                className="w-4 h-4"
-              >
-                <path d="M12 .587l3.668 7.431 8.2 1.193-5.934 5.782 1.4 8.171L12 18.897l-7.334 3.85 1.4-8.171L.132 9.211l8.2-1.193z" />
-              </svg>
-            ))}
-            <span className="text-gray-500 ml-2">| Đã bán {soldCount}</span>
-          </div>
+<div className="flex items-center gap-[2px] text-xs mt-1">
+  {Array.from({ length: 5 }).map((_, i) => (
+    <svg
+      key={i}
+      xmlns="http://www.w3.org/2000/svg"
+      fill="#ffc107"
+      viewBox="0 0 24 24"
+      stroke="none"
+      className="w-4 h-4"
+    >
+      <path d="M12 .587l3.668 7.431 8.2 1.193-5.934 5.782 1.4 8.171L12 18.897l-7.334 3.85 1.4-8.171L.132 9.211l8.2-1.193z" />
+    </svg>
+  ))}
+  <span className="text-gray-500 ml-1 whitespace-nowrap">| Đã bán {soldCount}</span>
+</div>
+
         )}
       </div>
     </div>
