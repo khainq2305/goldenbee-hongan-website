@@ -9,12 +9,13 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        primary: "bg-[var(--color-primary)] text-white hover:opacity-85",
-        outline: "border border-[var(--color-primary)] text-[var(--color-primary)] hover:bg-[var(--color-primary)] hover:text-white hover:opacity-85",
-        danger: "bg-[var(--color-primary)] text-white hover:opacity-85",
-        full: "bg-[var(--color-primary)] text-white w-full hover:opacity-85",
-        filter: "bg-[var(--color-primary)] text-white w-[278px] h-[32px] text-sm hover:opacity-85",
-        small: "bg-[var(--color-primary)] text-white h-[32px] px-4 text-sm hover:opacity-85",
+        primary: "bg-primary text-white hover:opacity-85",
+        outline: "border border-primary text-primary hover:bg-primary hover:text-white hover:opacity-85",
+        danger: "bg-primary text-white hover:opacity-85",
+        full: "bg-primary text-white w-full hover:opacity-85",
+        filter: "bg-primary text-white w-[278px] h-[32px] text-sm hover:opacity-85",
+        small: "bg-primary text-white h-[32px] px-4 text-sm hover:opacity-85",
+
       },
       size: {
         sm: "h-[32px] px-4 text-sm",
@@ -49,3 +50,4 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 Button.displayName = "Button"
 
 export { Button, buttonVariants }
+
