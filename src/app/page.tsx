@@ -1,10 +1,11 @@
-import UserOrderTabs from "@/components/ui/UserOrderTabs";
+import AccountSidebar from "@/components/layout/AccountSidebar";
+
 import Image from "next/image";
 
 export default function Home() {
   return (
    <>
-    <UserOrderTabs />
+    <AccountSidebar />
     </>
   );
 }

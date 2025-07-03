@@ -9,7 +9,7 @@ import Image from "next/image";
 const menuItems = [
   {
     label: "Thông tin tài khoản",
-    href: "/profile",
+    href: "/thong-tin-tai-khoan",
     icon: "/icon/accountSidebar/user.svg",
   },
   {
