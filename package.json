@@ -9,7 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@headlessui/react": "^2.2.4",
     "@heroicons/react": "^2.2.0",
     "@radix-ui/react-slot": "^1.2.3",
     "class-variance-authority": "^0.7.1",
@@ -24,6 +23,7 @@
     "swiper": "^11.2.8",
     "tailwind-merge": "^3.3.0",
     "tailwind-scrollbar-hide": "^4.0.0"
+
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
