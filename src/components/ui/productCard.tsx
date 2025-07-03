@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 
 type ProductStatus = "normal" | "discount" | "contact" | "disabled";
@@ -28,7 +29,7 @@ const ProductCard: React.FC<Props> = ({
       {/* Ảnh sản phẩm */}
       <div className="flex justify-center">
         <div className=" overflow-hidden p-2">
-          <img
+          <Image
             src={image}
             alt={name}
             className="w-[140px] h-[200px] object-contain"

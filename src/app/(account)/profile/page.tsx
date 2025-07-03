@@ -1,3 +1,6 @@
+import ResetPassPage from "../resetpass/page";
+
 export default function ProfilePage() {
-  return <div className="text-xl font-bold">Thông tin tài khoản</div>;
+  return <div className="text-xl">
+    <ResetPassPage/></div>;
 }
