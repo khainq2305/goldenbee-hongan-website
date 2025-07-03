@@ -17,6 +17,7 @@
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    
   }
 }
 
@@ -137,3 +138,21 @@ body {
     @apply bg-background text-foreground;
   }
 }
+}
+
+@utility container-wrapper {
+  @apply max-w-[var(--max-content)] mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+input, textarea, select, button {
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+input:focus, textarea:focus, select:focus, button:focus {
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+

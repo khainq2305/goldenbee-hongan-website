@@ -15,6 +15,7 @@ const buttonVariants = cva(
         full: "bg-primary text-white w-full hover:opacity-85",
         filter: "bg-primary text-white w-[278px] h-[32px] text-sm hover:opacity-85",
         small: "bg-primary text-white h-[32px] px-4 text-sm hover:opacity-85",
+
       },
       size: {
         sm: "h-[32px] px-4 text-sm",
@@ -49,3 +50,4 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 Button.displayName = "Button"
 
 export { Button, buttonVariants }
+
