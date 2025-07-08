@@ -19,7 +19,7 @@ const menuItems = [
   },
   {
     label: "Sổ địa chỉ",
-    href: "/address",
+    href: "/so-dia-chi",
     icon: "/icon/accountSidebar/address.svg",
   },
   {

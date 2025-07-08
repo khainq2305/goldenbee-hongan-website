@@ -3,6 +3,7 @@
 import { MoreVertical } from "lucide-react";
 import { useState } from "react";
 import DropdownMenu from "../../../components/ui/Dropdown";
+import Link from "next/link";
 
 type Address = {
   id: number;
@@ -36,10 +37,10 @@ export default function SoDiaChiPage() {
       {/* Nội dung bên phải */}
       <section className="md:col-span-3 space-y-6">
         <h1 className="text-xl text-black px-2 py-1 rounded">Sổ địa chỉ</h1>
-        <button className="w-full border border-dashed border-gray-300 rounded-md py-3 flex items-center justify-center gap-2 bg-white hover:bg-gray-50 transition">
+        <Link href={'/so-dia-chi/them-moi'} className="w-full border border-dashed border-gray-300 rounded-md py-3 flex items-center justify-center gap-2 bg-white hover:bg-gray-50 transition">
           <span className="text-blue-600 text-lg">+</span>
           <span className="text-blue-600 font-medium">Thêm địa chỉ mới</span>
-        </button>
+        </Link>
 
         <div className="space-y-4">
           {mockAddresses.map((item) => (
