@@ -67,8 +67,10 @@ export default function AccountLayout({ children }: { children: React.ReactNode 
       <AccountSidebar />
       {/* ĐÃ SỬA: XÓA 'p-6' khỏi main element */}
       <main className="flex-1 min-w-0 bg-white rounded-md shadow-sm">
+
         {children}
       </main>
+    </div>
     </div>
   );
 }

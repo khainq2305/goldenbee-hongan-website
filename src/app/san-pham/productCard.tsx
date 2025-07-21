@@ -1,3 +1,4 @@
+
 import React from "react";
 
 type ProductStatus = "normal" | "discount" | "contact" | "disabled";
@@ -22,12 +23,12 @@ const ProductCard: React.FC<Props> = ({
   status = "normal",
 }) => {
   return (
-<div className=" bg-[#ffffff] shadow-sm rounded p-3 flex flex-col w-full">
-      {" "}
-      {/* bỏ max-w */}
+    // THAY ĐỔI: Bỏ border border-gray-200 ở đây.
+    // bg-[#ffffff], p-3 và rounded vẫn giữ nguyên.
+    <div className="bg-[#ffffff] rounded p-3 flex flex-col w-full h-full">
       {/* Ảnh sản phẩm */}
-      <div className="flex justify-center">
-        <div className=" overflow-hidden p-2">
+      <div className="flex justify-center w-full">
+        <div className="overflow-hidden p-2">
           <img
             src={image}
             alt={name}
@@ -35,14 +36,14 @@ const ProductCard: React.FC<Props> = ({
           />
         </div>
       </div>
-      <div className="mt-2 flex flex-col gap-1">
+      <div className="mt-2 flex flex-col gap-1 w-full flex-grow">
         {/* Tên sản phẩm */}
-        <p className="line-clamp-2 font-medium text-black text-[15px] leading-tight">
+        <p className="line-clamp-2 font-medium text-black text-[15px] leading-tight text-left">
           {name}
         </p>
 
         {/* Giá & Badge thô */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 w-full justify-start">
           {status === "contact" ? (
             <p className="text-red-600 font-medium text-sm">Liên hệ</p>
           ) : status === "disabled" ? (
@@ -57,7 +58,7 @@ const ProductCard: React.FC<Props> = ({
                 {salePrice?.toLocaleString()}₫
               </p>
 
-              {/* Gắn cứng -XX% nếu là giảm giá */}
+              
               {status === "discount" && discountPercent && (
                 <span className="bg-gray-100 border border-gray-300 text-black text-xs px-1.5 py-0.5 rounded">
                   -{discountPercent}%
@@ -67,24 +68,23 @@ const ProductCard: React.FC<Props> = ({
           )}
         </div>
 
-        {/* Sao & Đã bán */}
+        
         {status !== "disabled" && status !== "contact" && (
-<div className="flex items-center gap-[2px] text-xs mt-1">
-  {Array.from({ length: 5 }).map((_, i) => (
-    <svg
-      key={i}
-      xmlns="http://www.w3.org/2000/svg"
-      fill="#ffc107"
-      viewBox="0 0 24 24"
-      stroke="none"
-      className="w-4 h-4"
-    >
-      <path d="M12 .587l3.668 7.431 8.2 1.193-5.934 5.782 1.4 8.171L12 18.897l-7.334 3.85 1.4-8.171L.132 9.211l8.2-1.193z" />
-    </svg>
-  ))}
-  <span className="text-gray-500 ml-1 whitespace-nowrap">| Đã bán {soldCount}</span>
-</div>
-
+          <div className="flex items-center gap-1 text-xs mt-1 w-full justify-start">
+            {Array.from({ length: 5 }).map((_, i) => (
+              <svg
+                key={i}
+                xmlns="http://www.w3.org/2000/svg"
+                fill="#ffc107"
+                viewBox="0 0 24 24"
+                stroke="none"
+                className="w-4 h-4"
+              >
+                <path d="M12 .587l3.668 7.431 8.2 1.193-5.934 5.782 1.4 8.171L12 18.897l-7.334 3.85 1.4-8.171L.132 9.211l8.2-1.193z" />
+              </svg>
+            ))}
+            <span className="text-gray-500 ml-1">| Đã bán {soldCount}</span>
+          </div>
         )}
       </div>
     </div>
