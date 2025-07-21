@@ -1,3 +1,4 @@
+
 "use client";
 
 import BannerSlider from "../components/ui/Banner";
@@ -13,6 +14,7 @@ import type { ComponentProps } from "react";
 
 // Lấy props của ProductCard để đảm bảo đúng kiểu
 type ProductCardProps = ComponentProps<typeof ProductCard>;
+
 
 export default function Home() {
   const mockProducts: ProductCardProps[] = [

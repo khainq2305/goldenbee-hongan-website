@@ -132,3 +132,17 @@ body {
   --sidebar-ring: oklch(0.556 0 0);
 }
 
+/* === BẮT ĐẦU CODE ẨN THANH CUỘN === */
+
+/* Dành cho các trình duyệt Webkit (Chrome, Safari, Opera) */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Dành cho các trình duyệt khác (IE, Edge, Firefox) */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* Internet Explorer và Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+/* === KẾT THÚC CODE ẨN THANH CUỘN === */

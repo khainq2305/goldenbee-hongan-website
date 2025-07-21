@@ -1,10 +1,22 @@
 "use client";
 import Image from "next/image";
 
-export default function OrderSummary() {
+interface OrderSummaryProps {
+  totalSelectedItems: number;
+  totalPrice: number;
+  subtotalAmount: number;
+  discountAmount: number;
+}
+
+export default function OrderSummary({
+  totalSelectedItems,
+  totalPrice,
+  subtotalAmount,
+  discountAmount,
+}: OrderSummaryProps) {
   return (
-    <div className="w-[320px] h-[432px] flex flex-col justify-between space-y-4">
-      <div className="bg-white rounded-[12px] border shadow-sm p-4 space-y-3">
+    <div className="w-full h-auto flex flex-col justify-between space-y-4">
+      <div className="bg-white rounded-[12px] border border-gray-100 shadow-sm p-4 space-y-3">
         <p className="text-sm font-semibold text-black">Hồng Ân Khuyến Mãi</p>
         <div className="relative w-full h-[60px]">
           <Image
@@ -32,7 +44,7 @@ export default function OrderSummary() {
             </span>
             <div className="flex-1" />
             <Image
-              src="/icon/accountSidebar/info.svg" // ← thay bằng icon bạn vừa upload
+              src="/icon/accountSidebar/info.svg"
               alt="info"
               width={18}
               height={18}
@@ -53,15 +65,17 @@ export default function OrderSummary() {
         </button>
       </div>
 
-      <div className="bg-white rounded-[12px] border shadow-sm flex flex-col flex-1">
+      <div className="bg-white rounded-[12px] border border-gray-100 shadow-sm flex flex-col flex-1">
         <div className="p-4 space-y-2 text-[13px] text-gray-800">
           <div className="flex justify-between">
             <span className="text-gray-500">Tổng tiền hàng</span>
-            <span className="font-semibold text-gray-900">241.800₫</span>
+            <span className="font-semibold text-gray-900">
+              {subtotalAmount.toLocaleString()}₫
+            </span>
           </div>
           <div className="flex justify-between font-medium text-green-600">
             <span>Giảm giá trực tiếp</span>
-            <span>-35.900₫</span>
+            <span>-{discountAmount.toLocaleString()}₫</span>
           </div>
 
           <hr className="border-dashed border-t border-gray-200" />
@@ -69,10 +83,12 @@ export default function OrderSummary() {
           <div className="space-y-1 text-[14px]">
             <div className="flex justify-between text-[15px] font-bold">
               <span className="text-black">Tổng tiền thanh toán</span>
-              <span className="text-[#d70018] text-[17px]">205.900₫</span>
+              <span className="text-[#d70018] text-[17px]">
+                {totalPrice.toLocaleString()}₫
+              </span>
             </div>
             <p className="text-[15px] text-green-600 font-medium text-right">
-              Tiết kiệm 35.900₫
+              Tiết kiệm {discountAmount.toLocaleString()}₫
             </p>
             <p className="text-[11px] text-gray-400 italic text-right">
               (Đã bao gồm VAT nếu có)
@@ -80,9 +96,9 @@ export default function OrderSummary() {
           </div>
         </div>
 
-        <div className="p-4 border-t">
+        <div className="p-4 border-t border-gray-100">
           <button className="w-full bg-[#d70018] hover:brightness-110 text-white py-2 rounded-[8px] font-semibold text-[14px] transition">
-            Mua hàng (2)
+            Mua hàng ({totalSelectedItems})
           </button>
         </div>
       </div>
