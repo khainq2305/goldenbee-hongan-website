@@ -12,7 +12,7 @@ import { ChevronDown } from "lucide-react"; // Import ChevronDown cho menu thả
 const menuItems = [
   {
     label: "Thông tin tài khoản",
-    href: "/profile",
+    href: "/thong-tin-tai-khoan",
     icon: "/icon/accountSidebar/user.svg",
   },
   {
@@ -22,7 +22,7 @@ const menuItems = [
   },
   {
     label: "Sổ địa chỉ",
-    href: "/address",
+    href: "/so-dia-chi",
     icon: "/icon/accountSidebar/address.svg",
   },
   {
