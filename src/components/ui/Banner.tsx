@@ -19,9 +19,8 @@ type Props = {
 
 export default function BannerSlider({ banners }: Props) {
   return (
-    <div className="w-full max-w-[1046px] mx-auto px-4">
-      {/* Responsive height with md:h-[404px] from Figma */}
-      <div className="relative h-[180px] sm:h-[240px] md:h-[404px]">
+    <div className="w-full overflow-hidden">
+      <div className="w-full max-w-[1100px] h-[180px] sm:h-[240px] md:h-[320px] px-4 relative overflow-hidden">
         <Swiper
           modules={[Navigation, Pagination, Autoplay]}
           slidesPerView={1}
@@ -43,7 +42,7 @@ export default function BannerSlider({ banners }: Props) {
             768: { slidesPerView: 1 }, // ✅ tablet vẫn 1 ảnh
             1024: { slidesPerView: 2 }, // desktop 2 ảnh
           }}
-          className="w-full h-full"
+          className="w-full max-w-full h-full"
         >
           {banners.map((banner) => (
             <SwiperSlide key={banner.id}>
@@ -68,7 +67,6 @@ export default function BannerSlider({ banners }: Props) {
       </div>
 
       {/* Pagination */}
-<div className="custom-pagination mt-4 hidden lg:flex justify-center" />
     </div>
   );
 }

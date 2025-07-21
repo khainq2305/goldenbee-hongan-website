@@ -22,7 +22,7 @@ const ProductCard: React.FC<Props> = ({
   status = "normal",
 }) => {
   return (
-<div className=" bg-[#ffffff] shadow-sm rounded p-3 flex flex-col w-full">
+<div className=" bg-[#ffffff] shadow-sm rounded p-3 flex flex-col ">
       {" "}
       {/* bỏ max-w */}
       {/* Ảnh sản phẩm */}
