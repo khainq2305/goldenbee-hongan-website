@@ -38,6 +38,11 @@ export default function BannerSlider({ banners }: Props) {
             renderBullet: (_, className) =>
               `<span class="${className} swiper-custom-bullet"></span>`,
           }}
+          breakpoints={{
+            640: { slidesPerView: 1 }, // mobile
+            768: { slidesPerView: 1 }, // ✅ tablet vẫn 1 ảnh
+            1024: { slidesPerView: 2 }, // desktop 2 ảnh
+          }}
           className="w-full max-w-full h-full"
         >
           {banners.map((banner) => (
@@ -60,8 +65,8 @@ export default function BannerSlider({ banners }: Props) {
           <HiChevronRight className="w-5 h-5 text-blue-600" />
         </button>
       </div>
-
       <div className="custom-pagination mt-4 hidden lg:flex justify-center" />
+
     </div>
   );
 }
