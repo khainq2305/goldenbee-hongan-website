@@ -17,7 +17,7 @@ const menuItems = [
   },
   {
     label: "Quản lý đơn hàng",
-    href: "/orders",
+    href: "/don-hang", // Đã sửa: Thay đổi từ "/orders" thành "/don-hang" để khớp với cấu trúc folder
     icon: "/icon/accountSidebar/order.svg",
   },
   {
@@ -40,14 +40,16 @@ const menuItems = [
 export default function AccountSidebar() {
   const pathname = usePathname();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  // Khai báo kiểu tường minh cho dropdownRef là HTMLDivElement hoặc null
   const dropdownRef = useRef<HTMLDivElement>(null); 
+
+  // --- Dữ liệu người dùng giả lập ---
+  const userName = "Nguyễn Văn A"; // Thay thế bằng dữ liệu thực tế của người dùng
+  const userEmail = "user@gmail.com"; // Thay thế bằng dữ liệu thực tế của người dùng
+  // --- Kết thúc dữ liệu người dùng giả lập ---
 
   // Đóng menu thả xuống khi nhấp ra ngoài
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => { // Thêm kiểu cho event
-      // Kiểm tra xem dropdownRef.current có tồn tại và là một HTMLElement hay không
-      // event.target có thể là Node hoặc EventTarget, nên cần ép kiểu an toàn
+    const handleClickOutside = (event: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) { 
         setIsDropdownOpen(false);
       }
@@ -64,9 +66,9 @@ export default function AccountSidebar() {
     };
   }, [isDropdownOpen]);
 
-  // Xác định nhãn cho tab đang hoạt động hiện tại cho nút thả xuống
-  const currentActiveItem = menuItems.find(item => item.href === pathname);
-  const dropdownButtonLabel = currentActiveItem ? currentActiveItem.label : "Chọn mục...";
+  // Phần này không còn cần để xác định nhãn nút thả xuống nữa, nhưng vẫn có thể dùng cho logic khác nếu cần
+  // const currentActiveItem = menuItems.find(item => item.href === pathname);
+  // const dropdownButtonLabel = currentActiveItem ? currentActiveItem.label : "Chọn mục...";
 
   return (
     <>
@@ -74,7 +76,7 @@ export default function AccountSidebar() {
       <div className="relative w-full lg:hidden mb-4" ref={dropdownRef}>
         <button
           onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-          className="flex items-center justify-between w-full p-3 bg-white rounded-md shadow-sm border border-gray-200 hover:bg-gray-50 transition-colors"
+          className="flex items-center justify-between w-full p-3 bg-white rounded-md shadow-sm hover:bg-gray-50 transition-colors"
           aria-expanded={isDropdownOpen}
         >
           <div className="flex items-center">
@@ -86,10 +88,13 @@ export default function AccountSidebar() {
               </svg>
             </div>
             <div className="text-left overflow-hidden">
-                {/* Hiển thị nhãn tab đang hoạt động hoặc văn bản mặc định */}
-              <p className="font-medium text-sm text-gray-900 truncate">
-                {dropdownButtonLabel}
-              </p>
+                {/* HIỂN THỊ TÊN VÀ EMAIL NGƯỜI DÙNG TẠI ĐÂY */}
+                <p className="font-bold text-sm text-gray-900 truncate">
+                  {userName}
+                </p>
+                <p className="text-xs text-gray-500 truncate">
+                  {userEmail}
+                </p>
             </div>
           </div>
           <ChevronDown
@@ -127,7 +132,7 @@ export default function AccountSidebar() {
 
       {/* Thanh bên trên máy tính để bàn - Ẩn trên màn hình nhỏ hơn 'lg', hiển thị nếu không */}
       <aside className="w-full max-w-[260px] bg-white rounded-md p-4 space-y-6 hidden lg:block">
-        {/* Ảnh đại diện + Thông tin */}
+        {/* Ảnh đại diện + Thông tin (PHIÊN BẢN DESKTOP - VẪN GIỮ NGUYÊN) */}
         <div className="flex items-center gap-3">
           <div className="w-14 h-14 rounded-full bg-gray-400 flex items-center justify-center">
             <svg xmlns="http://www.w3.org/2000/svg" fill="white" width="28" height="28" viewBox="0 0 24 24">
@@ -136,8 +141,8 @@ export default function AccountSidebar() {
             </svg>
           </div>
           <div>
-            <p className="text-base font-bold text-gray-900">Nguyễn Văn A</p>
-            <p className="text-sm text-gray-500">user@gmail.com</p>
+            <p className="text-base font-bold text-gray-900">{userName}</p>
+            <p className="text-sm text-gray-500">{userEmail}</p>
           </div>
         </div>
 

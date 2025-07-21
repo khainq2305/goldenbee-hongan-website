@@ -8,7 +8,7 @@ import SuggestedProducts from "../chi-tiet-san-pham/SuggestedProducts";
 
 export default function ProductDetailPage() {
   return (
-    <main className="bg-[#f6f7fb] min-h-screen pt-8 px-4">
+    <main className="bg-[#f6f7fb] min-h-screen pt-8">
       <div className="w-full max-w-[1200px] mx-auto">
         <div className="lg:flex lg:gap-6">
           {/* LEFT: Hình ảnh */}
