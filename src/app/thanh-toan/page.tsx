@@ -79,7 +79,7 @@ export default function CheckoutPage() {
 
   return (
     <div className="bg-gray-100 min-h-screen py-6">
-      <main className="max-w-[1200px] w-full mx-auto pb-[80px] px-0">
+      <main className="max-w-[1200px] w-full mx-auto pb-[100px] px-0">
         <div className="mb-3 px-0 lg:px-4">
           <Breadcrumb>
             <BreadcrumbList className="gap-1">

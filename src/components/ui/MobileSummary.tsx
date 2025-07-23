@@ -9,6 +9,7 @@ interface MobileSummaryProps {
   discount: number;
   totalPay: number;
   currentTotal: number;
+  onCheckout?: () => void;
   itemCount: number;
 }
 
@@ -17,6 +18,7 @@ export default function MobileSummary({
   discount,
   totalPay,
   currentTotal,
+  onCheckout,
   itemCount,
 }: MobileSummaryProps) {
   return (
@@ -84,7 +86,10 @@ export default function MobileSummary({
             Tiết kiệm {discount.toLocaleString()}₫
           </p>
         </div>
-        <button className="bg-[#d70018] text-white py-2 px-5 rounded font-semibold">
+        <button
+          onClick={onCheckout}
+          className="bg-[#d70018] text-white py-2 px-5 rounded font-semibold"
+        >
           Mua hàng ({itemCount})
         </button>
       </div>

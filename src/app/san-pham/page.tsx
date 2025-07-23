@@ -3,8 +3,9 @@
 
 import React, { useState } from "react";
 
+import Link from "next/link";
 
-import ProductCard from "./productCard";
+import ProductCard from "@/components/ui/productCard";
 import BannerSlider from "@/components/ui/Banner";
 import { Button } from "@/components/ui/button";
 import ExploreCategories from "./ExploreCategories";
@@ -29,8 +30,9 @@ const mockBanners = [
 ];
 
 
-const mockProducts = [
+export const mockProducts = [
   {
+    slug: "chatgpt-thuc-chien",
     image: "images/product/SANPHAM1.png",
     name: "ChatGPT Thực Chiến - Cuốn Sách Đầu Tiên Về ChatGPT Bằng Tiếng Việt",
     salePrice: 104000,
@@ -40,6 +42,7 @@ const mockProducts = [
     status: "discount" as const,
   },
   {
+    slug: "dam-me-dam-ruc",
     image: "images/product/SANPHAM2.png",
     name: "Dám Mê Dám Rực - Bí Mật Của Những Người Phụ Nữ Hạnh Phúc",
     salePrice: 104000,
@@ -49,12 +52,14 @@ const mockProducts = [
     status: "discount" as const,
   },
   {
+    slug: "combo-4-cuon-chatgpt-dam-me-tu-duy-chinh-phuc",
     image: "images/product/SANPHAM3.png",
     name: "Combo 4 cuốn: ChatGPT + Dám Mê Dám Rực + Tư Duy Ngược + Chinh Phục Mục Tiêu",
     salePrice: 0,
     status: "contact" as const,
   },
   {
+    slug: "sach-cho-be-2-tuoi-phat-trien-sang-tao-ngon-ngu",
     image: "images/product/SANPHAM4.png",
     name: "Sách cho bé từ 2 tuổi - Bộ 4 cuốn Phát triển Sáng tạo và Ngôn ngữ",
     salePrice: 150000,
@@ -62,8 +67,9 @@ const mockProducts = [
     soldCount: 50,
   },
   {
+    slug: "chatgpt-thuc-chien-2",
     image: "images/product/SANPHAM1.png",
-    name: "ChatGPT Thực Chiến - Cuốn Sách Đầu Tiên Về ChatGPT Bằng Tiếng Việt",
+    name: "ChatGPT Thực Chiến - Cuốn Sách Đầu Tiên Về ChatGPT Bằng Tiếng Việt (Bản 2)",
     salePrice: 104000,
     regularPrice: 129000,
     discountPercent: 19,
@@ -71,8 +77,9 @@ const mockProducts = [
     status: "discount" as const,
   },
   {
+    slug: "dam-me-dam-ruc-2",
     image: "images/product/SANPHAM2.png",
-    name: "Dám Mê Dám Rực - Bí Mật Của Những Người Phụ Nữ Hạnh Phúc",
+    name: "Dám Mê Dám Rực - Bí Mật Của Những Người Phụ Nữ Hạnh Phúc (Bản 2)",
     salePrice: 104000,
     regularPrice: 139000,
     discountPercent: 25,
@@ -80,8 +87,9 @@ const mockProducts = [
     status: "discount" as const,
   },
   {
+    slug: "dam-me-dam-ruc-3",
     image: "images/product/SANPHAM2.png",
-    name: "Dám Mê Dám Rực - Bí Mật Của Những Người Phụ Nữ Hạnh Phúc",
+    name: "Dám Mê Dám Rực - Bí Mật Của Những Người Phụ Nữ Hạnh Phúc (Bản 3)",
     salePrice: 104000,
     regularPrice: 139000,
     discountPercent: 25,
@@ -89,8 +97,9 @@ const mockProducts = [
     status: "discount" as const,
   },
   {
+    slug: "dam-me-dam-ruc-4",
     image: "images/product/SANPHAM2.png",
-    name: "Dám Mê Dám Rực - Bí Mật Của Những Người Phụ Nữ Hạnh Phúc",
+    name: "Dám Mê Dám Rực - Bí Mật Của Những Người Phụ Nữ Hạnh Phúc (Bản 4)",
     salePrice: 104000,
     regularPrice: 139000,
     discountPercent: 25,
@@ -99,12 +108,14 @@ const mockProducts = [
   },
 ];
 
+
 const SanPhamPage = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   return (
     <div className="bg-gray-100 py-4">
-      <main className="max-w-[1200px] w-full mx-auto">
+     <main className="max-w-[1200px] w-full mx-auto pb-32">
+
 
         <div className="mb-2">
           <Breadcrumb>
@@ -161,15 +172,22 @@ const SanPhamPage = () => {
                     
                     className="relative group rounded-lg overflow-hidden lg:p-0"
                   >
-                    <ProductCard
-                      image={product.image}
-                      name={product.name}
-                      salePrice={product.salePrice}
-                      regularPrice={product.regularPrice}
-                      discountPercent={product.discountPercent}
-                      soldCount={product.soldCount}
-                      status={product.status}
-                    />
+                <Link href={`/san-pham/${product.slug}`} key={product.slug} className="relative group rounded-lg overflow-hidden lg:p-0 block">
+
+  <ProductCard
+    image={product.image}
+    name={product.name}
+    salePrice={product.salePrice}
+    regularPrice={product.regularPrice}
+    discountPercent={product.discountPercent}
+    soldCount={product.soldCount}
+    status={product.status}
+  />
+  <div
+    className="absolute inset-0 rounded-lg border-2 border-gray-300 opacity-0 group-hover:opacity-100 transition-opacity"
+  />
+</Link>
+
                 
                     <div
                       className="

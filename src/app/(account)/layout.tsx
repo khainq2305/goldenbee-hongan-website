@@ -37,7 +37,8 @@ export default function AccountLayout({ children }: { children: React.ReactNode 
   }
 
   return (
-    <div className="flex flex-col lg:flex-row lg:gap-6 bg-gray-100 min-h-screen">
+  <div className="bg-gray-100 min-h-screen py-6">
+    <div className="max-w-[1200px] mx-auto w-full px-4 flex flex-col lg:flex-row lg:gap-6">
       {breadcrumbs.length > 1 && (
         <div className="w-full lg:hidden mb-4">
           <nav className="text-sm text-gray-500" aria-label="breadcrumb">
@@ -65,12 +66,12 @@ export default function AccountLayout({ children }: { children: React.ReactNode 
       )}
 
       <AccountSidebar />
-      {/* ĐÃ SỬA: XÓA 'p-6' khỏi main element */}
-      <main className="flex-1 min-w-0 bg-white rounded-md shadow-sm">
 
+      <main className="flex-1 min-w-0 bg-white rounded-md shadow-sm">
         {children}
       </main>
     </div>
-    </div>
-  );
+  </div>
+);
+
 }

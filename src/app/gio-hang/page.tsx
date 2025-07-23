@@ -7,6 +7,7 @@ import MobileSummary from "@/components/ui/MobileSummary";
 import MobileAddressBar from "./MobileAddressBar";
 import OrderSummary from "@/components/ui/OrderSummary";
 import { ChevronRight, Trash2 } from "lucide-react";
+import { useRouter } from "next/navigation"; 
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -39,6 +40,7 @@ const mockCartItems: CartItemType[] = [
 export default function CartPage() {
   const [cartItems, setCartItems] = useState<CartItemType[]>(mockCartItems);
   const [selectAll, setSelectAll] = useState(false);
+  const router = useRouter(); 
   const [selectedItems, setSelectedItems] = useState<number[]>(
     mockCartItems.map((p) => p.id)
   );
@@ -175,11 +177,12 @@ export default function CartPage() {
 
           <div className="hidden lg:block w-full lg:w-[320px] flex-shrink-0">
             <OrderSummary
-              totalSelectedItems={totalSelected}
-              subtotalAmount={subtotalDemo}
-              discountAmount={discountDemo}
-              totalPrice={totalDemo}
-            />
+  totalSelectedItems={totalSelected}
+  subtotalAmount={subtotalDemo}
+  discountAmount={discountDemo}
+  totalPrice={totalDemo}
+  onCheckout={() => router.push("/thanh-toan")}
+/>
           </div>
         </div>
       </main>

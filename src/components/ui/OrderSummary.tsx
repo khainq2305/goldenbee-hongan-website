@@ -5,6 +5,7 @@ interface OrderSummaryProps {
   totalSelectedItems: number;
   totalPrice: number;
   subtotalAmount: number;
+  onCheckout?: () => void; 
   discountAmount: number;
 }
 
@@ -12,6 +13,7 @@ export default function OrderSummary({
   totalSelectedItems,
   totalPrice,
   subtotalAmount,
+  onCheckout,
   discountAmount,
 }: OrderSummaryProps) {
   return (
@@ -97,9 +99,13 @@ export default function OrderSummary({
         </div>
 
         <div className="p-4 border-t border-gray-100">
-          <button className="w-full bg-[#d70018] hover:brightness-110 text-white py-2 rounded-[8px] font-semibold text-[14px] transition">
-            Mua hàng ({totalSelectedItems})
-          </button>
+          <button
+  onClick={onCheckout}
+  className="w-full bg-[#d70018] hover:brightness-110 text-white py-2 rounded-[8px] font-semibold text-[14px] transition"
+>
+  Mua hàng ({totalSelectedItems})
+</button>
+
         </div>
       </div>
     </div>
