@@ -18,15 +18,25 @@ type Props = {
   banners: Banner[];
 };
 
+function chunkArray<T>(array: T[], size: number): T[][] {
+  const result: T[][] = [];
+  for (let i = 0; i < array.length; i += size) {
+    result.push(array.slice(i, i + size));
+  }
+  return result;
+}
+
 export default function BannerSlider({ banners }: Props) {
+  const groupedBanners = chunkArray(banners, 2); // group mỗi slide 2 ảnh
+  const shouldLoop = groupedBanners.length > 1;
+
   return (
     <div className="w-full overflow-hidden">
-      <div className="w-full max-w-[970px] h-[180px] sm:h-[240px] md:h-[320px] px-4 relative overflow-hidden">
+      <div className="w-full h-[180px] sm:h-[240px] md:h-[320px] px-4 relative overflow-hidden">
         <Swiper
           modules={[Navigation, Pagination, Autoplay]}
-          slidesPerView={2}
           spaceBetween={16}
-          loop
+          loop={shouldLoop}
           autoplay={{ delay: 4000 }}
           navigation={{
             prevEl: ".custom-prev",
@@ -38,21 +48,20 @@ export default function BannerSlider({ banners }: Props) {
             renderBullet: (_, className) =>
               `<span class="${className} swiper-custom-bullet"></span>`,
           }}
-          breakpoints={{
-            640: { slidesPerView: 1 }, // mobile
-            768: { slidesPerView: 1 }, // ✅ tablet vẫn 1 ảnh
-            1024: { slidesPerView: 2 }, // desktop 2 ảnh
-          }}
-          className="w-full max-w-full h-full"
+          className="w-full h-full"
         >
-          {banners.map((banner) => (
-            <SwiperSlide key={banner.id} className="!w-full px-2 box-border">
-              <div className="w-full h-full rounded-lg overflow-hidden">
-                <img
-                  src={banner.imageUrl}
-                  alt={`Banner ${banner.id}`}
-                  className="w-full h-full object-cover"
-                />
+          {groupedBanners.map((group, idx) => (
+            <SwiperSlide key={idx} className="!w-full px-2 box-border">
+              <div className="grid grid-cols-2 gap-3 h-full">
+                {group.map((banner) => (
+                  <div key={banner.id} className="w-full h-full rounded-lg overflow-hidden">
+                    <img
+                      src={banner.imageUrl}
+                      alt={`Banner ${banner.id}`}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                ))}
               </div>
             </SwiperSlide>
           ))}
@@ -65,8 +74,8 @@ export default function BannerSlider({ banners }: Props) {
           <HiChevronRight className="w-5 h-5 text-blue-600" />
         </button>
       </div>
-      <div className="custom-pagination mt-4 hidden lg:flex justify-center" />
 
+<div className="custom-pagination mt-4 flex justify-center" />
     </div>
   );
 }

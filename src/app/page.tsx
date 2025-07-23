@@ -1,4 +1,3 @@
-
 "use client";
 
 import BannerSlider from "../components/ui/Banner";
@@ -14,7 +13,6 @@ import type { ComponentProps } from "react";
 
 // Lấy props của ProductCard để đảm bảo đúng kiểu
 type ProductCardProps = ComponentProps<typeof ProductCard>;
-
 
 export default function Home() {
   const mockProducts: ProductCardProps[] = [
@@ -123,65 +121,66 @@ export default function Home() {
   return (
     <>
       <div className="bg-[#f5f5f5]">
-        <div className="flex space-x-2">
-          <div className="hidden lg:block mt-3">
-            <MenuSidebar />
-          </div>
-
-          <div className="flex-1 min-w-0 overflow-hidden px-3">
-            {/* Banner không bị tràn */}
-            <div className=" rounded-xl bg-white mt-3 py-4">
-              <BannerSlider
-                banners={[
-                  {
-                    id: 1,
-                    imageUrl:
-                      "https://s3-ap-southeast-1.amazonaws.com/storage.adpia.vn/affiliate_document/multi/sendo-sale-rat-that-4-4.jpg",
-                  },
-                  {
-                    id: 2,
-                    imageUrl:
-                      "https://thuvienmuasam.com/uploads/default/original/3X/6/5/6539a952ecff5c234edac5f6c236a7bc49e21f2c.jpeg",
-                  },
-                  {
-                    id: 3,
-                    imageUrl:
-                      "https://thuvienmuasam.com/uploads/default/original/3X/6/5/6539a952ecff5c234edac5f6c236a7bc49e21f2c.jpeg",
-                  },
-                  {
-                    id: 4,
-                    imageUrl:
-                      "https://thuvienmuasam.com/uploads/default/original/3X/6/5/6539a952ecff5c234edac5f6c236a7bc49e21f2c.jpeg",
-                  },
-                ]}
-              />
-            </div>
-            {/* các component khác */}
-            <div className="mt-3">
-              <AdventList />
+        <div className="max-w-[1280px] mx-auto px-2">
+          <div className="flex space-x-2">
+            <div className="hidden lg:block mt-3">
+              <MenuSidebar />
             </div>
 
-            <div className="mt-3">
-              <SlideProductSale />
-            </div>
+            <div className="flex-1 min-w-0 overflow-hidden px-3">
+              {/* Banner không bị tràn */}
+              <div className=" rounded-xl bg-white mt-3 py-4">
+                <BannerSlider
+                  banners={[
+                    {
+                      id: 1,
+                      imageUrl:
+                        "https://s3-ap-southeast-1.amazonaws.com/storage.adpia.vn/affiliate_document/multi/sendo-sale-rat-that-4-4.jpg",
+                    },
+                    {
+                      id: 2,
+                      imageUrl:
+                        "https://thuvienmuasam.com/uploads/default/original/3X/6/5/6539a952ecff5c234edac5f6c236a7bc49e21f2c.jpeg",
+                    },
+                    {
+                      id: 3,
+                      imageUrl:
+                        "https://thuvienmuasam.com/uploads/default/original/3X/6/5/6539a952ecff5c234edac5f6c236a7bc49e21f2c.jpeg",
+                    },
+                    {
+                      id: 4,
+                      imageUrl:
+                        "https://thuvienmuasam.com/uploads/default/original/3X/6/5/6539a952ecff5c234edac5f6c236a7bc49e21f2c.jpeg",
+                    },
+                  ]}
+                />
+              </div>
+              {/* các component khác */}
+              <div className="mt-3">
+                <AdventList />
+              </div>
 
-            <div className="mt-3">
-              <SliderBrand />
-            </div>
+              <div className="mt-3">
+                <SlideProductSale />
+              </div>
 
-            <div className="mt-3 ">
-              <LogoGrid />
-            </div>
+              <div className="mt-3">
+                <SliderBrand />
+              </div>
 
-            <div className="mt-3">
-              <RecommendationBar />
-            </div>
-            <div>
-              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 mt-3 mb-50">
-                {mockProducts.map((item, index) => (
-                  
-                  <ProductCard  key={index} {...item} />
-                ))}
+              <div className="mt-3 ">
+                <LogoGrid />
+              </div>
+
+              <div className="mt-3">
+                <RecommendationBar />
+              </div>
+              <div>
+                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 mt-3 mb-50">
+                  {mockProducts.map((item, index) => (
+                    <ProductCard key={index} {...item} />
+                  ))}
+                </div>
               </div>
             </div>
           </div>
