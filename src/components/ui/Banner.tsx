@@ -1,4 +1,3 @@
-// src/components/ui/Banner.tsx
 "use client";
 
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -8,6 +7,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "../../styles/banner.css";
+import { useEffect, useState } from "react";
 
 type Banner = {
   id: number;
@@ -27,8 +27,20 @@ function chunkArray<T>(array: T[], size: number): T[][] {
 }
 
 export default function BannerSlider({ banners }: Props) {
-  const groupedBanners = chunkArray(banners, 2); // group mỗi slide 2 ảnh
-  const shouldLoop = groupedBanners.length > 1;
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsDesktop(window.innerWidth >= 1024);
+    };
+
+    handleResize(); // initial check
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const slides = isDesktop ? chunkArray(banners, 2) : banners.map((b) => [b]);
+  const shouldLoop = slides.length > 1;
 
   return (
     <div className="w-full overflow-hidden">
@@ -50,9 +62,13 @@ export default function BannerSlider({ banners }: Props) {
           }}
           className="w-full h-full"
         >
-          {groupedBanners.map((group, idx) => (
+          {slides.map((group, idx) => (
             <SwiperSlide key={idx} className="!w-full px-2 box-border">
-              <div className="grid grid-cols-2 gap-3 h-full">
+              <div
+                className={`grid ${
+                  group.length === 2 ? "grid-cols-2 gap-3" : ""
+                } h-full`}
+              >
                 {group.map((banner) => (
                   <div key={banner.id} className="w-full h-full rounded-lg overflow-hidden">
                     <img
@@ -75,7 +91,7 @@ export default function BannerSlider({ banners }: Props) {
         </button>
       </div>
 
-<div className="custom-pagination mt-4 flex justify-center" />
+      <div className="custom-pagination mt-4 flex justify-center" />
     </div>
   );
 }
