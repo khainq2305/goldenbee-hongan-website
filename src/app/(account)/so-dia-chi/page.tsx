@@ -35,7 +35,7 @@ export default function SoDiaChiPage() {
   return (
     <>
       {/* Nội dung bên phải */}
-      <section className="md:col-span-3 space-y-6">
+      <section className="md:col-span-3 space-y-6 p-4">
         <h1 className="text-xl text-black px-2 py-1 rounded">Sổ địa chỉ</h1>
         <Link href={'/so-dia-chi/them-moi'} className="w-full border border-dashed border-gray-300 rounded-md py-3 flex items-center justify-center gap-2 bg-white hover:bg-gray-50 transition">
           <span className="text-blue-600 text-lg">+</span>
